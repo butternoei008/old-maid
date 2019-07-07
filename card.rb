@@ -1,23 +1,19 @@
 class Card 
     RANKS = %w(2 3 4 5 6 7 8 9 10 J Q K A)
     SUITS = %w(Spade Heart Club Diamond)
-    # โพดำ โพแดง ดอกจิก
     
     attr_accessor :rank, :suit
 
     def initialize(id) 
-       
         self.rank = RANKS[id % 13]
         self.suit = SUITS[id % 4]
-
     end
-
 end
 
 class Deck
     attr_accessor :cards
     def initialize
-        self.cards = (0..51).to_a.shuffle.collect{
+        self.cards = (0..51).to_a.shuffle.collect { 
             |id| Card.new(id)
         }
     end
@@ -37,14 +33,12 @@ class Old_maid
     end
 
     def player(deck) 
-
         player_1 = []
         player_2 = []
 
         switch = 1
 
         deck.each do |draw|
-
             if switch.even?
                 player_1 << draw
             else
@@ -52,21 +46,31 @@ class Old_maid
             end
 
             switch += 1
-
         end
 
         return [player_1, player_2]
     end
 
+    def match_pop(deck_player)
+        deck_pop = []
+
+        deck_player.each do |pop|
+            deck_pop << pop
+        end
+
+        deck_player.each do |pop|
+            repeat = deck_pop.count(pop)
+            if repeat > 1
+                if repeat.even?
+                    deck_pop.delete(pop)
+                else
+                    deck_pop.delete_at(deck_pop.find_index(pop))
+                    deck_pop.delete_at(deck_pop.find_index(pop))
+                end
+            end
+        end
+
+        return deck_pop
+    end
+
 end
-
-odm = Old_maid.new
-
-draw_card = odm.draw_card
-old_maid = draw_card.pop()
-
-player = odm.player(draw_card)
-
-puts "Old maid: #{old_maid}"
-puts "Bot: #{player[1]}"
-puts "Player1: #{player[0]}"
