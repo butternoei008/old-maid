@@ -54,7 +54,7 @@ class Old_maid
     def match_pop(deck_player)
         deck_pop = []
 
-        deck_player.each do |pop|
+        deck_player.map do |pop|
             deck_pop << pop
         end
 
@@ -71,6 +71,14 @@ class Old_maid
         end
 
         return deck_pop
+    end
+
+    def deck_scret(deck_reveal)
+        i = 0
+        deck_sc = deck_reveal.map {
+            |id| "{#{i += 1}}"
+        }
+        return deck_sc
     end
 
 end
