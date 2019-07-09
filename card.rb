@@ -81,4 +81,19 @@ class Old_maid
         return deck_sc
     end
 
+    def choose_card(deck_card) 
+        loop do
+            print "Choose card: "
+            card = gets.chomp().to_i
+            puts deck_card.length
+
+            if(card > deck_card.length || card < 1) 
+                puts "Cant'n choose card! try again"
+            else
+                return card
+                break if card <= deck_card.length
+            end
+        end
+    end
+
 end
