@@ -16,12 +16,25 @@ loop do
 
     puts "Old maid: #{old_maid}"
     puts "Bot: #{deck_bot}"
-    puts "Bot: #{deck_scret}"
-    puts "Player: #{deck_player}"
+    # puts "Bot: #{deck_scret}"
+    puts "Player: #{deck_player} \n"
 
-    choose_card = odm.choose_card(deck_bot)
-    card_pop = deck_bot.delete_at(choose_card-1)
-    deck_player << card_pop
+    if switch == 1
+        choose_card = odm.choose_card(deck_bot)
+        card_pop = deck_bot.delete_at(choose_card-1)
+        deck_player << card_pop
+
+        switch = 2
+    elsif switch == 2
+        choose_card = deck_player.sample
+        puts "Bot choose card: #{choose_card}"
+        deck_bot << choose_card
+        deck_bot = odm.match_pop(deck_bot)
+
+        deck_player.delete_at(deck_player.find_index(choose_card))
+
+        switch = 1
+    end
 
     break if deck_player.length == 0 && deck_bot.length == 1 || deck_bot.length == 0 && deck_player.length == 1
 
