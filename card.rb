@@ -85,7 +85,6 @@ class Old_maid
         loop do
             print "Choose card: "
             card = gets.chomp().to_i
-            puts deck_card.length
 
             if(card > deck_card.length || card < 1) 
                 puts "Cant'n choose card! try again"
