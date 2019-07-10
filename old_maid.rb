@@ -14,12 +14,8 @@ switch = 1;
 loop do
     deck_scret = odm.deck_scret(deck_bot)
 
-    puts "Old maid: #{old_maid}"
-    # puts "Bot: #{deck_bot}"
-    puts "Bot: #{deck_scret}"
-    puts "Player: #{deck_player}"
+    odm.monitor(old_maid, deck_scret, deck_player)
     
-
     if switch == 1
         choose_card = odm.choose_card(deck_bot)
         card_pop = deck_bot.delete_at(choose_card-1)
@@ -39,13 +35,14 @@ loop do
         switch = 1
     end
 
-    puts
+    odm.monitor(old_maid, deck_bot, deck_player)
 
     if deck_player.length == 0 && deck_bot.length == 1
-        puts "You win!!!"
+        puts "\nYou win!!!"
     elsif deck_player.length == 1 && deck_bot.length == 0
-        puts "You noob!!!"
+        puts "\nYou noob!!!"
     end
+
     break if deck_player.length == 0 && deck_bot.length == 1 || deck_player.length == 1 && deck_bot.length == 0
 
 end

@@ -81,6 +81,12 @@ class Old_maid
         return deck_sc
     end
 
+    def monitor(old_maid, deck_scret, deck_player)
+        puts "\nOld maid: #{old_maid}"
+        puts "Bot: #{deck_scret}"
+        puts "Player: #{deck_player}" 
+    end
+
     def choose_card(deck_card) 
         loop do
             print "Choose card: "
