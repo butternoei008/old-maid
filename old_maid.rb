@@ -35,9 +35,8 @@ loop do
         switch = 1
     end
 
-    odm.monitor(old_maid, deck_bot, deck_player)
-
     if deck_player.length == 0 && deck_bot.length == 1
+        odm.monitor(old_maid, deck_bot, deck_player)
         puts "\nYou win!!!"
     elsif deck_player.length == 1 && deck_bot.length == 0
         puts "\nYou noob!!!"
