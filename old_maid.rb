@@ -36,12 +36,14 @@ loop do
     end
 
     if deck_player.length == 0 && deck_bot.length == 1
-        odm.monitor(old_maid, deck_bot, deck_player)
         puts "\nYou win!!!"
     elsif deck_player.length == 1 && deck_bot.length == 0
         puts "\nYou noob!!!"
     end
 
+    
     break if deck_player.length == 0 && deck_bot.length == 1 || deck_player.length == 1 && deck_bot.length == 0
-
+    
 end
+
+odm.monitor(old_maid, deck_bot, deck_player)
