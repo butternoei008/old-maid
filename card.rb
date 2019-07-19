@@ -32,23 +32,38 @@ class Old_maid
         return card_deck
     end
 
-    def player(deck) 
-        player_1 = []
-        player_2 = []
+    def num_of_player()
+        num = 0
 
-        switch = 1
+        loop do
+            print "Choose the number of players 2-4: "
+            num = gets.chomp.to_i
+
+            if num == 2 || num == 3 || num == 4
+                return num
+                break 
+            else
+                puts "Choose of 2-4 only!"
+            end
+        end
+
+        return num
+    end
+
+    def player(deck, players_num) 
+        players_of = Array.new(players_num, [])
+
+        switch = 0
 
         deck.each do |draw|
-            if switch.even?
-                player_1 << draw
-            else
-                player_2 << draw
-            end
+            index = switch % players_num
+
+            players_of[index] += [draw]
 
             switch += 1
         end
 
-        return [player_1, player_2]
+        return players_of
     end
 
     def match_pop(deck_player)
@@ -100,5 +115,13 @@ class Old_maid
             end
         end
     end
+
+    def result(deck_player, deck_bot)
+        if deck_player.length == 0 && deck_bot.length == 1
+            puts "\n              YOU WIN!!!"
+        elsif deck_player.length == 1 && deck_bot.length == 0
+            puts "\n             YOU NOOB!!!"
+        end
+    end 
 
 end
