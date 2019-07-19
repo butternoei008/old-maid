@@ -8,10 +8,11 @@ old_maid = draw_card.pop()
 players_num = odm.num_of_player()
 player = odm.player(draw_card, players_num)
 
-puts "#{player}"
+deck_player = odm.match_pop(player[0])
 
-# deck_player = odm.match_pop(player[1])
-# deck_bot = odm.match_pop(player[0])
+deck_bot = odm.deckMathPop(player, players_num) 
+
+puts "#{deck_bot}"
 
 # switch = 1;
 

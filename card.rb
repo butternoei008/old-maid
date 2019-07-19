@@ -88,6 +88,16 @@ class Old_maid
         return deck_pop
     end
 
+    def deckMathPop(get_deck, players_num) 
+        deck_bot = Array.new(players_num - 1, [])
+
+        (0..players_num-2).each do |deck|
+            deck_bot[deck] += self.match_pop(get_deck[deck])
+        end
+
+        return deck_bot
+    end
+
     def deck_scret(deck_reveal)
         i = 0
         deck_sc = deck_reveal.map {
