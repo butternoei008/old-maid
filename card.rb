@@ -101,10 +101,14 @@ class Old_maid
     end
 
     def deck_scret(deck_reveal)
-        i = 0
-        deck_sc = deck_reveal.map {
-            |id| "{#{i += 1}}"
-        }
+
+        deck_sc = deck_reveal.map do |deck| 
+            i = 0 
+            deck.map do |card|
+                "{#{i += 1}}"
+            end
+        end
+
         return deck_sc
     end
 

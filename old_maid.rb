@@ -15,9 +15,9 @@ deck_bot = odm.deckBotMathPop(player, players_num)
 # switch = 1;
 
 loop do
-#     deck_scret = odm.deck_scret(deck_bot)
+    deck_scret = odm.deck_scret(deck_bot)
 
-    odm.monitor("?", deck_bot, deck_player)
+    odm.monitor("?", deck_scret, deck_player)
     
 #     if switch == 1
 #         choose_card = odm.choose_card(deck_bot)
