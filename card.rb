@@ -88,12 +88,14 @@ class Old_maid
         return deck_pop
     end
 
-    def deckMathPop(get_deck, players_num) 
-        deck_bot = Array.new(players_num - 1, [])
+    def deckBotMathPop(get_deck, players_num) 
+        deck_bot = Array.new(players_num, [])
 
-        (0..players_num-2).each do |deck|
+        (1..players_num-1).each do |deck|
             deck_bot[deck] += self.match_pop(get_deck[deck])
         end
+
+        deck_bot.shift()
 
         return deck_bot
     end
@@ -108,7 +110,13 @@ class Old_maid
 
     def monitor(old_maid, deck_scret, deck_player)
         puts "\nOld maid: #{old_maid}"
-        puts "Bot: #{deck_scret}"
+
+        i = 0
+        deck_scret.each do |card|
+            puts (deck_scret.length > 1 ? "Bot#{i+1}: " : "Bot: ") + "#{deck_scret[i]}"
+            i += 1
+        end
+        
         puts "Player: #{deck_player}" 
     end
 

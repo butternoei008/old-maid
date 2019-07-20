@@ -10,16 +10,14 @@ player = odm.player(draw_card, players_num)
 
 deck_player = odm.match_pop(player[0])
 
-deck_bot = odm.deckMathPop(player, players_num) 
-
-puts "#{deck_bot}"
+deck_bot = odm.deckBotMathPop(player, players_num) 
 
 # switch = 1;
 
-# loop do
+loop do
 #     deck_scret = odm.deck_scret(deck_bot)
 
-#     odm.monitor("?", deck_scret, deck_player)
+    odm.monitor("?", deck_bot, deck_player)
     
 #     if switch == 1
 #         choose_card = odm.choose_card(deck_bot)
@@ -39,10 +37,10 @@ puts "#{deck_bot}"
 
 #         switch = 1
 #     end
-
+    break
 #     break if deck_player.length == 0 && deck_bot.length == 1 || deck_player.length == 1 && deck_bot.length == 0
     
-# end
+end
 
 # odm.monitor(old_maid, deck_bot, deck_player)
 
