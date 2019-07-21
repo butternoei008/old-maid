@@ -12,21 +12,23 @@ deck_player = odm.match_pop(player[0])
 
 deck_bot = odm.deckBotMathPop(player, players_num) 
 
-# switch = 1;
+switch = 0;
+last_bot = players_num - 2
 
 loop do
     deck_scret = odm.deck_scret(deck_bot)
 
     odm.monitor("?", deck_scret, deck_player)
-    
-#     if switch == 1
-#         choose_card = odm.choose_card(deck_bot)
-#         card_pop = deck_bot.delete_at(choose_card-1)
-#         deck_player << card_pop
-        
-#         deck_player = odm.match_pop(deck_player)
 
-#         switch = 2
+    if switch == 0
+        choose_card = odm.choose_card(deck_bot[last_bot])
+        card_pop = deck_bot[last_bot].delete_at(choose_card-1)
+        deck_player << card_pop
+        
+        deck_player = odm.match_pop(deck_player)
+
+        switch = 1
+    end
 #     elsif switch == 2
 #         choose_card = deck_player.sample
 #         puts "Bot choose card: #{choose_card}"
