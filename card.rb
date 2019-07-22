@@ -126,7 +126,7 @@ class Old_maid
 
     def choose_card(deck_card) 
         loop do
-            print "Choose card: "
+            print "Player choose card: "
             card = gets.chomp().to_i
 
             if(card > deck_card.length || card < 1) 
