@@ -39,7 +39,7 @@ class Old_maid
             print "Choose the number of players 2-4: "
             num = gets.chomp.to_i
 
-            if num == 2 || num == 3 || num == 4
+            if num > 1 && num < 5
                 return num
                 break 
             else
