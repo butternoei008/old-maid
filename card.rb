@@ -114,6 +114,7 @@ class Old_maid
 
     def monitor(old_maid, deck_scret, deck_player)
         puts "\nOld maid: #{old_maid}"
+        puts "Player: #{deck_player}" 
 
         i = 0
         deck_scret.each do |card|
@@ -121,7 +122,6 @@ class Old_maid
             i += 1
         end
         
-        puts "Player: #{deck_player}" 
     end
 
     def choose_card(deck_card) 
@@ -138,10 +138,29 @@ class Old_maid
         end
     end
 
-    def result(deck_player, deck_bot)
-        if deck_player.length == 0 && deck_bot.length == 1
+    def end_game(deck_player, deck_bot) 
+        player = deck_player
+        bot = []
+
+        deck_bot.map do |check_bot|
+            if check_bot.length > 0
+                bot << "hc"
+            end
+        end
+
+        if player.length == 0 && bot.length == 1
+            return [false, "player"]
+        elsif player.length == 1 && bot.length == 0
+            return [false, "bot"]
+        else
+            return [true, "countinue"]
+        end
+    end
+
+    def result(result_game)
+        if result_game[1] = "player"
             puts "\n              YOU WIN!!!"
-        elsif deck_player.length == 1 && deck_bot.length == 0
+        else
             puts "\n             YOU NOOB!!!"
         end
     end 
