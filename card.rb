@@ -158,7 +158,7 @@ class Old_maid
     end
 
     def result(result_game)
-        if result_game[1] = "player"
+        if result_game[1] == "player"
             puts "\n              YOU WIN!!!"
         else
             puts "\n             YOU NOOB!!!"

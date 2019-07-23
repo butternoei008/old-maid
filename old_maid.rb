@@ -23,9 +23,9 @@ loop do
 
         odm.monitor("?", deck_bot, deck_player)
 
-        if deck_bot[0].length > 0
-            choose_card = odm.choose_card(deck_bot[0])
-            card_pop = deck_bot[0].delete_at(choose_card-1)
+        if deck_bot.last.length > 0
+            choose_card = odm.choose_card(deck_bot.last)
+            card_pop = deck_bot.last.delete_at(choose_card-1)
             deck_player << card_pop
             
             deck_player = odm.match_pop(deck_player)
@@ -37,13 +37,13 @@ loop do
         i = 0
         
         (0..last_bot).each do |index|
-            forward = index + 1
+            forward = index - 1
 
-            if index != last_bot && deck_bot[forward].length > 0 || index == last_bot && deck_player.length > 0
+            if index == 0 && deck_player.length > 0 || index != 0 && deck_bot[forward].length > 0
                 
                 odm.monitor("?", deck_bot, deck_player)
                 
-                if index == last_bot
+                if index == 0
                     choose_card = deck_player.sample
                     deck_player.delete_at(deck_player.find_index(choose_card))
                 else
