@@ -166,6 +166,7 @@ class OldMaid
 end
 
 class Engine
+
     def game
         odm = OldMaid.new
 
@@ -245,6 +246,7 @@ class Engine
         print "\n---------------RESULT---------------"
         odm.result(result_game)
     end
+    
 end
 
 old_maid = Engine.new
