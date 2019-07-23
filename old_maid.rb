@@ -21,7 +21,7 @@ loop do
 
     if switch == 0
 
-        odm.monitor("?", deck_bot, deck_player)
+        odm.monitor("?", deck_scret, deck_player)
 
         if deck_bot.last.length > 0
             choose_card = odm.choose_card(deck_bot.last)
@@ -37,27 +37,29 @@ loop do
         i = 0
         
         (0..last_bot).each do |index|
-            forward = index - 1
+            prev_ = index - 1
+            next_ = index + 1
 
-            if index == 0 && deck_player.length > 0 || index != 0 && deck_bot[forward].length > 0
+            if index == 0 && deck_player.length > 0 || index != 0 && deck_bot[prev_].length > 0
                 
-                odm.monitor("?", deck_bot, deck_player)
+                odm.monitor("?", deck_scret, deck_player)
                 
                 if index == 0
                     choose_card = deck_player.sample
                     deck_player.delete_at(deck_player.find_index(choose_card))
                 else
-                    choose_card = deck_bot[forward].sample
-                    deck_bot[forward].delete_at(deck_bot[forward].find_index(choose_card))
+                    choose_card = deck_bot[prev_].sample
+                    deck_bot[prev_].delete_at(deck_bot[prev_].find_index(choose_card))
                 end
                 
+                label_bot = deck_bot.length == 1 ? "Bot" : "Bot#{next_}" 
                 
-                puts "Bot#{forward} choose card: #{choose_card}"
+                puts "#{label_bot} choose card: #{choose_card}"
                 deck_bot[index] << choose_card
                 deck_bot[index] = odm.match_pop(deck_bot[index])
             else
-                odm.monitor("?", deck_bot, deck_player)
-                puts "Bot#{forward} choose card: -"
+                odm.monitor("?", deck_scret, deck_player)
+                puts "#{label_bot} choose card: -"
             end
 
         end
